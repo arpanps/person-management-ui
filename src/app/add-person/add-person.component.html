@@ -1,0 +1,61 @@
+<h3>Create Person</h3>  
+<div class="row">  
+  <div class="col-sm-4"></div>  
+  <div class="col-sm-4" >  
+    <div [hidden]="submitted" style="width: 400px;">  
+      <form [formGroup]="personsaveform" #saveperson (ngSubmit)="savePerson(savePerson)">  
+          <div class="form-group">  
+              <label for="name">Person Name</label>  
+              <input type="text" class="form-control"  formControlName="first_name" data-toggle="tooltip"   
+                 data-placement="right" title="Enter Person Name" >  
+              <div class="alert alert-danger" *ngIf = "(PersonFirstName.touched) && (PersonFirstName.invalid)"   
+                style="margin-top: 5px;">  
+                  <span *ngIf="!!PersonFirstName.errors.required">Person Name is Required</span>  
+                    <span *ngIf = "!!PersonFirstName?.errors.minlength"> MinLength Error</span>                     
+                </div>  
+          </div>  
+    
+          <div class="form-group">  
+              <label for="name">Person Last Name</label>  
+              <input type="text" class="form-control" formControlName="last_name"   
+                data-toggle="tooltip" data-placement="right" title="Enter Person Email">  
+                <div class="alert alert-danger" *ngIf = "(PersonLastName.touched) && (PersonLastName.invalid)"   
+                style="margin-top: 5px;">  
+                   <span *ngIf="!!PersonLastName.errors.required">Person Name is Required</span>  
+                    <span *ngIf = "!!PersonLastName.errors.minlength"> MinLength Error</span>                      
+                </div>  
+          </div>  
+    
+          <div class="form-group">  
+              <label for="name">Person Age</label>  
+                <input type="text" class="form-control" formControlName="age" [(ngModel)]="person.age">  
+
+          </div>  
+          <div class="form-group">  
+              <label for="name">Favourite Colour</label>  
+
+              <select class="form-control" formControlName="favourite_colour" data-toggle="tooltip"   
+                      data-placement="right" title="Select Color">  
+                    <option value="null">--Select Color--</option>  
+                  <option value="red">red</option>  
+                  <option value="blue">blue</option>  
+                  <option value="black">black</option>  
+                  <option value="white">white</option>  
+                </select>
+          </div> 
+          <button type="submit" class="btn btn-success">Submit</button>  
+      </form>  
+  </div>  
+  </div>  
+  <div class="col-sm-4"></div>  
+</div>  
+<div class="row">  
+  <div class="col-sm-4"></div>  
+  <div class="col-sm-4">  
+      <div [hidden]="!submitted">  
+         <h4>Person Added SuccessFully!</h4>  
+         <button (click)="addPersonForm()" class='btn btn-primary'>Add More Person</button>  
+      </div>        
+  </div>  
+  <div class="col-sm-4"></div>  
+</div>  
